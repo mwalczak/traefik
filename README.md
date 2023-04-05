@@ -26,3 +26,4 @@ or open browser: http://exposed.docker.localhost/
 ### Summary:
 1. Service containers to expose must be connected to traefik network
 2. Internal services should be connected only to default network
+3. Check mailcatcher service example to see how to connect custom port

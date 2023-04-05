@@ -19,6 +19,16 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.internal.rule=Host(`internal.docker.localhost`)"
 
+  mailcatcher:
+    image: schickling/mailcatcher
+    networks:
+      - default
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.mailcatcher.loadbalancer.server.port=1080"
+      - "traefik.http.routers.mailcatcher.rule=Host(`mailcatcher.docker.localhost`)"
+
 networks:
   default:
   traefik:
