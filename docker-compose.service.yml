@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  exposed:
+    # A container that exposes an API to show its IP address
+    image: traefik/whoami
+    networks:
+      - default
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.exposed.rule=Host(`exposed.docker.localhost`)"
+
+  internal:
+    image: traefik/whoami
+    networks:
+      - default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.internal.rule=Host(`internal.docker.localhost`)"
+
+networks:
+  default:
+  traefik:
+    external: true
